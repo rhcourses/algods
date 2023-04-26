@@ -23,11 +23,11 @@
 
 \begin{frame}
     \begin{exblock}{Maximum einer Liste bestimmen}
-        \inputsrcfile[slidelisting, xleftmargin=-3em, basicstyle=\ttfamily\scriptsize]{sections/complexity/bigo/code/ListSearch.java}[9-15]
+        \inputsrcfile[slidelisting, basicstyle=\ttfamily\scriptsize]{sections/complexity/bigo/code/searchmax.go}[4-12]
     \end{exblock}
     \begin{block}<2->{Komplexität}
         \begin{itemize}
-            \item $n$ Schleifendurchläufe (Aufrufe von \code{Math.max})
+            \item $n$ Schleifendurchläufe (Vergleiche \code{v > max})
             \item Komplexitätsklasse: \olin
         \end{itemize}
     \end{block}
@@ -35,11 +35,14 @@
 
 \begin{frame}
     \begin{exblock}{Differenz zw. Minimum und Maximum bestimmen}
-        \inputsrcfile[slidelisting, xleftmargin=-3em, basicstyle=\ttfamily\scriptsize]{sections/complexity/bigo/code/ListSearch.java}[20-30]
+        \inputsrcfile[slidelisting, basicstyle=\ttfamily\scriptsize]{sections/complexity/bigo/code/diffminmax.go}[4-6]
     \end{exblock}
     \begin{block}<2->{Komplexität}
         \begin{itemize}
-            \item $2n$ Aufrufe von \code{Math.max} oder \code{Math.min}
+            \item Je ein Durchlauf von \code{searchMax} und \code{searchMin}
+            \begin{itemize}
+                \item Diese haben jeweils lineare Komplexität (\olin).
+            \end{itemize}
             \item Komplexitätsklasse: \olin
             \begin{itemize}
                 \item \alert{Warum nicht \bigo{2n}?}
@@ -50,15 +53,11 @@
 
 \begin{frame}
     \begin{exblock}{Minimale Differenz von Elementen bestimmen}
-        \inputsrcfile[slidelisting, xleftmargin=-3em, basicstyle=\ttfamily\scriptsize]{sections/complexity/bigo/code/ListSearch.java}[35-43]
+        \inputsrcfile[slidelisting, basicstyle=\ttfamily\scriptsize]{sections/complexity/bigo/code/closestpair.go}[6-17]
     \end{exblock}
     \begin{block}<2->{Komplexität}
         \begin{itemize}
-            \item $n$ Durchläufe der äußeren Schleife
-            \item pro Durchlauf: $\leq n$ Durchläufe der inneren Schleife
-            \begin{itemize}
-                \item \alert{Warum $\leq n$ und nicht genauer?}
-            \end{itemize}
+            \item $n$ Durchläufe der äußeren Schleife, $\leq n$ mal innere Schleife
             \item Komplexitätsklasse: \osquare
         \end{itemize}
     \end{block}
