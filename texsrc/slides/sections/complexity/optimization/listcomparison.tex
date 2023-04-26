@@ -1,0 +1,46 @@
+\begin{frame}
+    \begin{block}{Ziel: Prüfung, ob zwei Listen die gleichen Elemente haben}
+        \begin{itemize}
+            \item Gegeben: Zwei Listen von Zahlen \code{A} und \code{B}
+            \item Ergebnis: \code{true}, falls jedes Element aus Liste \code{A} auch in Liste \code{B} vorkommt und umgekehrt.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Naiver Ansatz}
+        \begin{itemize}
+            \item Durchlaufe Liste \code{A}.
+            \begin{itemize}
+                \item Suche jedes Element in Liste \code{B}.
+            \end{itemize}
+            \item Wiederhole für Liste \code{B}.
+        \end{itemize}
+    \end{block}
+    \begin{block}<3->{Komplexität}
+        \begin{itemize}
+            \item $n$ Durchläufe der äußeren Schleife
+            \item pro Durchlauf: $\leq n$ Durchläufe der inneren Schleife
+            \item Komplexitätsklasse: \osquare
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Ziel: Prüfung, ob zwei Listen die gleichen Elemente haben}
+        \begin{itemize}
+            \item Gegeben: Zwei Listen von Zahlen \code{A} und \code{B}
+            \item Ergebnis: \code{true}, falls jedes Element aus Liste \code{A} auch in Liste \code{B} vorkommt und umgekehrt.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Optimierte Lösung}
+        \begin{itemize}
+            \item Sortiere beide Listen.
+            \item Vergleiche die Listen in einem einzigen Durchlauf.
+        \end{itemize}
+    \end{block}
+    \begin{block}<3->{Komplexität}
+        \begin{itemize}
+            \item Sortieren: \onlog
+            \item Vergleichen: \olin
+            \item \alert{Gesamt}: $\onlog + \olin = \alert{\onlog}$
+        \end{itemize}
+    \end{block}
+\end{frame}

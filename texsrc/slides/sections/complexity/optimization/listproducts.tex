@@ -1,0 +1,49 @@
+\begin{frame}
+    \begin{block}{Ziel: Suche nach dem größten Produkt benachbarter Elemente einer Liste}
+        \begin{itemize}
+            \item Gegeben: Eine Liste von Zahlen der Länge $n$.
+            \item Ergebnis: Das größte Produkt von $m$ benachbarten Elementen.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Naiver Ansatz}
+        \begin{itemize}
+            \item Durchlaufe die Liste von Stelle $0$ bis $n-m$.
+            \begin{itemize}
+                \item Von jeder Position aus berechne das Produkt der nächsten $m$ Elemente.
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    \begin{block}<3->{Komplexität}
+        \begin{itemize}
+            \item $n-m \leq n$ Durchläufe der äußeren Schleife
+            \item pro Durchlauf: $m$ Durchläufe der inneren Schleife
+            \item Komplexitätsklasse: \bigo{n \cdot m} (für große $m$ grob \osquare)
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Ziel: Suche nach dem größten Produkt benachbarter Elemente einer Liste}
+        \begin{itemize}
+            \item Gegeben: Eine Liste von Zahlen der Länge $n$.
+            \item Ergebnis: Das größte Produkt von $m$ benachbarten Elementen.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Optimierter Ansatz}
+        \begin{itemize}
+            \item Berechne das Produkt der ersten $m$ Elemente.
+            \item Durchlaufe die Liste von Stelle $m$ bis $n$.
+            \begin{itemize}
+                \item Multipliziere das Produkt mit dem Element an Stelle $i$.
+                \item Dividiere das Produkt durch das Element an Stelle $i-m$.
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    \begin{block}<3->{Komplexität}
+        \begin{itemize}
+            \item Berechnung des Anfangsprodukts: \olin[m]
+            \item Schleife \olin[n-m]
+            \item \alert{Gesamt: \olin}
+        \end{itemize}
+    \end{block}
+\end{frame}

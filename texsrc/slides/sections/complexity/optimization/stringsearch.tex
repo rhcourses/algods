@@ -1,0 +1,58 @@
+\begin{frame}
+    \begin{block}{Ziel: Suche nach einem String in einem Text}
+        \begin{itemize}
+            \item Gegeben: Ein Text (String) der Länge $n$ und ein zu suchender String der Länge $m$.
+            \item Ergebnis: Alle Positionen, an denen der Suchstring vorkommt.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Naiver Ansatz}
+        \begin{itemize}
+            \item Durchlaufe den gesamten Text.
+            \begin{itemize}
+                \item An jeder Position vergleiche den dortigen Teilstring mit dem gesuchten String.
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    \begin{block}<3->{Komplexität}
+        \begin{itemize}
+            \item $n$ Durchläufe der äußeren Schleife
+            \item pro Durchlauf: $m$ Schritte für den Vergleich.
+            \item Komplexitätsklasse: \bigo{n \cdot m}.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Ziel: Suche nach einem String in einem Text}
+        \begin{itemize}
+            \item Gegeben: Ein Text (String) der Länge $n$ und ein zu suchender String der Länge $m$.
+            \item Ergebnis: Alle Positionen, an denen der Suchstring vorkommt.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Optimierung}
+        \begin{itemize}
+            \item Durchlaufe den gesamten Text.
+            \begin{itemize}
+                \item An jeder Position vergleiche den dortigen Teilstring mit dem gesuchten String.
+                \item Bei Nicht-Übereinstimmung berechne, wie weit gesprungen werden kann.
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Ziel: Suche nach einem String in einem Text}
+        \begin{itemize}
+            \item Gegeben: Ein Text (String) der Länge $n$ und ein zu suchender String der Länge $m$.
+            \item Ergebnis: Alle Positionen, an denen der Suchstring vorkommt.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Optimierung bei häufiger Suche}
+        \begin{itemize}
+            \item Baue einen \alert{Suchindex} auf:
+            \item Z.B. ein Präfixbaum, der für mögliche Suchbegriffe die Positionen im Text enthält.
+            \item Kann aus einer Datenbank häufiger Anfragen erstellt werden.
+            \item Kann nebenbei erstellt und aktualisiert werden.
+        \end{itemize}
+    \end{block}
+\end{frame}

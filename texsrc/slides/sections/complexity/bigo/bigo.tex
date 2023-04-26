@@ -1,0 +1,138 @@
+\begin{frame}
+    \begin{block}{Bisher: Informelle Komplexitätsabschätzungen}
+        \begin{itemize}
+            \item Laufzeitabschätzungen in Abhängigkeit der Größe einer Datenstruktur
+            \begin{itemize}
+                \item z.B. Länge einer Liste oder Anzahl der Elemente eines Baumes
+            \end{itemize}
+            \item<2-> Beobachtung: Laufzeit wird i.d.R. \emph{ungenau} angegeben.
+            \begin{itemize}
+                \item z.B. Schleifendurchläufe zählen, aber nicht die Anzahl der Operationen innerhalb der Schleife
+                \item z.B. geschachtelte Schleifen berücksichtigen, hintereinander ausgeführte Schleifen aber nicht
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}<3->{Ziel: Formalisierung dieser Ungenauigkeiten}
+        \begin{itemize}
+            \item Wie kommen diese Abschätzungen zustande?
+            \item Welche Operationen müssen gezählt werden?
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{exblock}{Maximum einer Liste bestimmen}
+        \inputsrcfile[slidelisting, xleftmargin=-3em, basicstyle=\ttfamily\scriptsize]{sections/complexity/bigo/code/ListSearch.java}[9-15]
+    \end{exblock}
+    \begin{block}<2->{Komplexität}
+        \begin{itemize}
+            \item $n$ Schleifendurchläufe (Aufrufe von \code{Math.max})
+            \item Komplexitätsklasse: \olin
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{exblock}{Differenz zw. Minimum und Maximum bestimmen}
+        \inputsrcfile[slidelisting, xleftmargin=-3em, basicstyle=\ttfamily\scriptsize]{sections/complexity/bigo/code/ListSearch.java}[20-30]
+    \end{exblock}
+    \begin{block}<2->{Komplexität}
+        \begin{itemize}
+            \item $2n$ Aufrufe von \code{Math.max} oder \code{Math.min}
+            \item Komplexitätsklasse: \olin
+            \begin{itemize}
+                \item \alert{Warum nicht \bigo{2n}?}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{exblock}{Minimale Differenz von Elementen bestimmen}
+        \inputsrcfile[slidelisting, xleftmargin=-3em, basicstyle=\ttfamily\scriptsize]{sections/complexity/bigo/code/ListSearch.java}[35-43]
+    \end{exblock}
+    \begin{block}<2->{Komplexität}
+        \begin{itemize}
+            \item $n$ Durchläufe der äußeren Schleife
+            \item pro Durchlauf: $\leq n$ Durchläufe der inneren Schleife
+            \begin{itemize}
+                \item \alert{Warum $\leq n$ und nicht genauer?}
+            \end{itemize}
+            \item Komplexitätsklasse: \osquare
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Beobachtungen}
+        \begin{itemize}
+            \item Komplexitätsklassen geben nur die Größenordnung an.
+            \item Konstante Faktoren und nicht-dominante Terme werden vernachlässigt.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Beispiele}
+        \vspace{-3ex}
+        \begin{align*}
+            \olin &= \bigo{2n} = \bigo{\frac{n}{2}} \\
+            \osquare &= \bigo{n^2+n+1} = \bigo{\left(\frac{n}{2}\right)^2} \\
+            \onlog &= \bigo{2n \log n  + 50n}
+        \end{align*}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Intuition:}
+        \begin{itemize}
+            \item Der Unterschied zwischen \olin und \bigo{2n} kann durch schnellere Hardware ausgeglichen werden.
+            \item Ebenso der Unterschied zwischen \osquare und \bigo{2(n^2)}.
+            \item Der Unterschied zwischen \olin und \osquare kann nicht so einfach kompensiert werden.
+            \item Das Verhalten von Polynomen (Funktionen) wird i.W. vom \emph{Leitterm} bestimmt.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Ziel bei der Entwicklung:}
+        \begin{itemize}
+            \item Komplexitätsklasse möglichst klein halten.
+            \item \alert{Komplexität kann nicht durch Hardware ausgeglichen werden!}
+            \item Konstante oder lineare Faktoren sind weniger von Bedeutung.
+        \end{itemize}
+    \end{block}
+\end{frame}
+    
+\begin{frame}
+    \begin{defblock}{$O$-Komplexität}
+        Gegeben eine Funktion $f(n)$, ist $f(n) = O(g(n))$ genau dann, wenn es eine positive Konstante $c$ gibt, so dass für alle $n \geq n_0$ gilt:
+        \begin{align*}
+            f(n) \leq c \cdot g(n)
+        \end{align*}
+    \end{defblock}
+    \begin{block}<2->{Intuitiv:}
+        \begin{itemize}
+            \item Falls $f(n) \geq g(n)$ für alle $n$ gilt, dann unterscheiden sich
+                  die Funktionen nur durch einen konstanten Faktor.
+            \item Für große $n$ ist $g(n)$ eine gute Abschätzung für $f(n)$.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{defblock}{$O$-Komplexität}
+        \vspace{-3ex}
+        \begin{align*}
+            f \in \bigo{g} &\Leftrightarrow \exists_{c>0} \exists_{n_0} \forall_{n \geq n_0}: f(n) \leq c \cdot g(n)
+        \end{align*}
+    \end{defblock}
+    \begin{block}{Intuitiv:}
+        \begin{itemize}
+            \item Die Funktion $f(n)$ wächst nicht schneller als $g(n)$.
+            \item Für \alert{fast alle $n$} gilt $f(n) \leq c \cdot g(n)$.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Konstante Faktoren sind nicht relevant:}
+        \begin{itemize}
+            \item Bewegen sich im Bereich der Ungenauigkeit, die durch unterschiedliche Hardware entsteht.
+            \item Bieten geringes Optimierungspotenzial.
+            \item Können ggf. durch Hardware ausgeglichen werden.
+        \end{itemize}
+    \end{block}
+\end{frame}
