@@ -1,0 +1,79 @@
+\begin{frame}
+    \begin{block}{Erinnerung: Binäre Suchbäume}
+        \begin{itemize}
+            \item Idee: Optimales Such- und Einfügeverhalten sortierter Listen.
+            \item Komplexität: Logarithmisches Verhalten wie bei binärer Suche.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{\alert{Es geht besser, wenn keine perfekte Sortierung benötigt wird!}}
+    \end{block}
+    \begin{block}<3->{Idee: Fordere nur eine partielle Sortierung}
+        \begin{itemize}
+            \item Knoten müssen größer oder kleiner als ihre Kinder sein.
+            \item Keine Relation zwischen den Kindern.
+            \item Beobachtung: Größtes/Kleinstes Element steht an der Wurzel.
+            \item Ermöglicht sehr schnellen Zugriff auf Wurzel.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{defblock}{Vollständiger Binärbaum}
+        Ein vollständiger Binärbaum ist ein Binärbaum mit folgenden Eigenschaften:
+        \begin{itemize}
+            \item Jede Ebene ist vollständig besetzt.
+            \item Nur in der untersten Ebene dürfen Elemente fehlen.
+            \item Ebenen werden beim Einfügen von links nach rechts aufgefüllt.
+        \end{itemize}
+    \end{defblock}
+    \begin{block}<2->{Bemerkungen}
+        \begin{itemize}
+            \item Ein vollständiger Binärbaum hat keine Lücken.
+            \item Kann deshalb effizient als Liste gespeichert werden.
+            \item Einfache Berechnung der Indizes:
+            \begin{itemize}
+                \item Elternknoten an Stelle $n$
+                \item Kinder an Stellen $2n+1$ und $2n+2$
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{defblock}{Min-Heap}
+        Ein Min-Heap ist ein vollst. Binärbaum mit folgender Eigenschaft:
+        \begin{itemize}
+            \item Jeder Knoten ist kleiner als seine Kinder
+            \item (Definition \emph{Max-Heap} analog.)
+        \end{itemize}
+    \end{defblock}
+    \begin{block}<2->{Einfügen von Elementen}
+        \begin{itemize}
+            \item Neues Element am Ende einfügen.
+            \item Aufsteigen lassen, bis es richtig eingeordnet ist.
+        \end{itemize}
+    \end{block}
+    \begin{block}<3->{Entfernen der Wurzel}
+        \begin{itemize}
+            \item Wurzel durch letztes Element ersetzen (tauschen).
+            \item Absteigen lassen, bis es richtig eingeordnet ist.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Verhalten beim Einfügen/Löschen von Elementen}
+        \begin{itemize}
+            \item Zugriff auf Wurzel in konstanter Zeit (\oconst).
+            \item Einfügen und Löschen in \olog.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Anwendungen}
+        \begin{itemize}
+            \item \emph{Priority Queues}
+            \item Routingverfahren, z.B. Navigationssysteme, Netzwerke
+            \item Optimierungs- und Planungsprobleme
+            \item effiziente Sortierverfahren (HeapSort)
+        \end{itemize}
+    \end{block}
+\end{frame}
