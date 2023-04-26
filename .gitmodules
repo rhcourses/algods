@@ -1,0 +1,3 @@
+[submodule "external/latexmacros"]
+	path = external/latexmacros
+	url = https://github.com/src2crs/latexmacros.git
