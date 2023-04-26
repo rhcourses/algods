@@ -1,0 +1,74 @@
+\begin{frame}
+    \begin{block}{Anforderungen an Hashfunktionen}
+        \begin{itemize}
+            \item Hashfunktion berechnet Zahlen aus beliebigen Elementen.
+            \item Kollisionen sind nicht zu vermeiden,
+                  sollten aber so selten wie möglich auftreten.
+            \item Berechnung des Hashes muss schnell gehen.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Vermeidung von Kollisionen}
+        \begin{itemize}
+            \item Werte sollten möglichst gleichmäßig verteilt sein.
+            \item Viel mehr Speicher verwenden als benötigt wird,
+                  damit die Wahrscheinlichkeit einer Kollisiton gering ist. 
+        \end{itemize}
+    \end{block}
+    \begin{block}<3->{Umgang mit Kollisionen}
+        \begin{itemize}
+            \item \alert{geschlossenes Hashing}: Neue Position berechnen (\emph{Sondieren})
+            \item \alert{offenes Hashing} Mehrere Elemente pro Position erlauben
+            \begin{itemize}
+                \item Z.B. als Liste pro Position
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{geschlossenes Hashing}
+        \begin{itemize}
+            \item Berechne so lange neue Hash-Werte, bis eine freie Stelle
+                  in der Hashtabelle gefunden wurde.
+            \item Auch beim Suchen nach Schlüsseln müssen wiederholt Hashes berechnet
+                  und die gefundenen Elemente geprüft werden.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Beispiel: Doppel-Hashing}
+        \begin{itemize}
+            \item Weiche bei Kollisionen auf eine zweite Hashfunktion aus.
+            \item Multipliziere die Hash-Werte mit der Anzahl der Versuche.
+        \end{itemize}
+    \end{block}
+    \begin{block}<3->{Beispiel: Kuckucks-Hashing}
+        \begin{itemize}
+            \item Verwende zwei Hashtabellen mit zwei Hashfunktionen.
+            \item Verdränge bei Kollisionen ggf. das vorgefundene Element
+            \item Füge verdrängte Elemente in die andere Hashtabelle ein.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Zusammenfassung}
+    \begin{itemize}
+        \item Speichere Elemente in einer Hashmap, bei der Positionen berechnet werden.
+        \item Verwende Hashfunktion mit möglichst wenigen Kollisionen.
+        \item Verwende viel Speicher, um Kollisionen zu vermeiden.
+        \item Bei Kollisionen verwende finde eine neue Position oder speichere Elemente in Listen.
+    \end{itemize}
+\end{block}
+\begin{block}<2->{Eigenschaften von Hashmaps}
+    \begin{itemize}
+        \item \alert{Effizienz}: Hashfunktion berechnet schnell Positionen.
+        \item Average Case: \alert{O(1)} für Suchen und Einfügen.
+        \item Worst Case: \alert{O(n)} für Suchen und Einfügen.
+        \begin{itemize}
+            \item geschlossenes Hashing: Ggf. viele Berechnungen notwendig.
+            \item offenes Hashing: Ggf. lange Listen an wenigen Positionen.
+        \end{itemize}
+    \end{itemize}
+\end{block}
+    
+
+\end{frame}

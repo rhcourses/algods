@@ -1,0 +1,98 @@
+\begin{frame}
+    \begin{block}{Erinnerung: Binäre Suchbäume}
+        \begin{itemize}
+            \item effiziente Speicherung von Schlüssel-Wert-Paaren
+            \item schnelles Einfügen, Löschen und Suchen\\
+                  (z.B. \alert{\olog} bei AVL-Bäumen)
+            \item Pointerstrukturen mit bekannten Vor- und Nachteilen
+        \end{itemize}
+    \end{block}
+
+    \begin{block}<2->{Erinnerung: Heaps}
+        \begin{itemize}
+            \item vollständige Binärbäume mit Teil-Sortierung der Elemente
+            \item Einfügen und Löschen in \alert{\olog}
+            \item Zugriff auf Wurzel sogar in \alert{\oconst}
+            \item Speicherung als Array, effizienter als binäre Suchbäume
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Neues Ziel: Average-Case-Zugriff auf jeden Schlüssel in \alert{\oconst}}
+    \end{block}
+    \begin{block}<2->{Wie könnte das gehen?}
+        \begin{itemize}
+            \item<3-> Warum geht der Zugriff auf die Wurzel bei Heaps schnell?
+            \begin{itemize}
+                \item<4-> Position ist bekannt und muss nicht gesucht werden!
+            \end{itemize}
+            \item<5-> Können wir das für alle Elemente erreichen?
+            \begin{itemize}
+                \item<6-> Idee: Verwende ein Array und berechne
+                      die Position des Elements aus dem Element selbst.
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    \begin{block}<7->{Welchen Preis müssen wir dafür bezahlen?}
+        \begin{itemize}
+            \item<8-> Erheblich mehr Speicherverbrauch 
+            \item<8-> schlechtere Worst-Case-Komplexität
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Idee zu Hashmaps}
+        \begin{itemize}
+            \item Speichere Elemente in einem Array (\alert{Hashtabelle}).
+            \item Berechne Position des Schlüssels mittels einer \alert{Hashfunktion}.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Eigenschaften der Hashfunktion}
+        \begin{itemize}
+            \item Eingabe: Das Element bzw. dessen Schlüssel
+            \item Ergebnis: Die Position des Elements im Array oder eine Zahl,
+                  aus der diese Position berechnet werden kann.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Idee zu Hashmaps}
+        \begin{itemize}
+            \item Speichere Elemente in einer Hashtabelle.
+            \item Berechne Position des Schlüssels mittels einer \alert{Hashfunktion}.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Beispiele für einfache Hashfunktionen}
+        \vspace{1ex}
+        \begin{tabularx}{\columnwidth}{lX}
+            Eingabe & Ergebnis \\
+            \hline
+            \onslide<2->{ein String & Summe der ASCII-Werte} \\
+            \onslide<3->{ein String & nach Position gewichtete Summe der ASCII-Werte} \\
+            \onslide<4->{ein Integer & der Wert selbst} \\
+            \onslide<5->{ein Integer & (gewichtete) Quersumme} \\
+            \onslide<6->{ein Struct & Summe der Hashwerte aller Member} \\
+        \end{tabularx}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Idee zu Hashmaps}
+        \begin{itemize}
+            \item Speichere Elemente in einer Hashtabelle.
+            \item Berechne Position des Schlüssels mittels einer \alert{Hashfunktion}.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Beobachtungen}
+        \begin{itemize}
+            \item Hashfunktion berechnet Zahlen aus beliebigen Elementen.
+            \item<3-> Ziel-Position kann z.B. durch \emph{Modulo} errechnet werden.
+            \item<4-> Die Hashfunktion ist i.d.R. \alert{nicht injektiv}.
+            \item<4-> D.h. es sind \alert{Kollisionen} möglich.
+            \item<5-> Anforderung: \alert{Berechnung muss schnell gehen!}
+        \end{itemize}
+    \end{block}
+\end{frame}
