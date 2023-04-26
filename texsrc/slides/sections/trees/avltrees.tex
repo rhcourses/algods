@@ -1,0 +1,108 @@
+\begin{frame}
+    \begin{block}{Ziel: Optimierung von binären Suchbäumen}
+        \begin{itemize}
+            \item Problem: Bäume können aus der Balance geraten.
+            \item Lösung: Reorganisieren, wenn das Ungleichgewicht zu groß wird.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Vorgehensweise}
+        \begin{itemize}
+            \item Beim Einfügen oder Löschen Struktur des Baumes analysieren.
+            \item Bei Bedarf Knoten umsortieren, damit linker und rechter Teilbaum
+                  jedes Knotens ungefähr gleich groß sind.
+            \item Problem: Analyse darf nicht zu teuer sein.
+            \item Frage: Was bedeutet \gqq{ungefähr gleich groß}überhaupt?
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{defblock}{Tiefe}
+        Die Tiefe eines Knotens ist die Länge des Pfades von der Wurzel bis zu diesem Knoten.
+    \end{defblock}
+    \begin{block}<2->{Bemerkungen}
+        \begin{itemize}
+            \item Berechnung rekursiv:
+            \begin{itemize}
+                \item Tiefe der Wurzel: $0$.
+                \item Tiefe eines Knotens: 1 + Tiefe des Elternknotens
+            \end{itemize}
+            \item Kann beim Einfügen/Löschen nebenbei berechnet werden.
+            \item Kann bei Bedarf im Knoten gespeichert und gepflegt werden.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{defblock}{Höhe}
+        Die Höhe eines Baums ist die Tiefe des tiefsten Knotens im Baum.
+    \end{defblock}
+    \begin{block}<2->{Bemerkungen}
+        \begin{itemize}
+            \item Berechnung rekursiv:
+            \begin{itemize}
+                \item Höhe eines Blatts Wurzel: $1$.
+                \item Höhe eines Knotens: 1 + Höhe des höheren Kindes
+            \end{itemize}
+            \item Kann beim Einfügen/Löschen nebenbei berechnet werden.
+            \item Kann bei Bedarf im Knoten gespeichert und gepflegt werden.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{defblock}{Balancefaktor}
+        Der Balancefaktor eines Knotens ist die Differenz zwischen der Höhe des rechten und des linken Teilbaums.
+    \end{defblock}
+    \begin{block}<2->{Bemerkungen}
+        \begin{itemize}
+            \item Kann beim Einfügen/Löschen nebenbei berechnet werden.
+            \item Gutes Maß für die Ausgeglichenheit des Baumes.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{defblock}{AVL-Baum}
+        Ein AVL-Baum ist ein binärer Suchbaum mit folgender Eigenschaft:
+        \begin{itemize}
+            \item Der Balancefaktor jedes Knotens liegt im Intervall $\lbrack -1, 1 \rbrack$.
+        \end{itemize}
+    \end{defblock}
+    \begin{block}<2->{Umsetzung}
+        \begin{itemize}
+            \item Beim Einfügen/Löschen Balancefaktoren bestimmen.
+            \item Nach Einfügen in Teilbaum: Umorganisieren der Knoten.
+            \item<3-> Nach Einfügen in Teilbaum bedeutet: Nach Rekursion.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Analyse der Balancefaktoren}
+        Nach Einfügen eines Knotens Balancefaktor prüfen.
+        \begin{itemize}
+            \item Falls $-2$: Linker Teilbaum zu hoch.
+            \item Falls $2$: Rechter Teilbaum zu hoch.
+            \item Prüfe Balancefaktor des linken/rechten Teilbaumes.
+            \item Führe passende \emph{Rotation} durch.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Ungleichgewichts-Situationen und Rotationen}
+        \begin{itemize}
+            \item Links-Links
+            \item Links-Rechts
+            \item Rechts-Rechts
+            \item Rechts-Links
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}    
+    \begin{block}{Verhalten beim Einfügen/Löschen/Suchen}
+        \begin{itemize}
+            \item Linker und rechter Teilbaum in allen Knoten fast gleich tief.
+            \item Logarithmisches Verhalten beim Suchen, Einfügen und Löschen.
+        \end{itemize}
+    \end{block}
+\end{frame}

@@ -1,0 +1,67 @@
+\begin{frame}
+    \begin{defblock}{Binärer Suchbaum}
+        Ein binärer Suchbaum ist ein Binärbaum mit folgenden Eigenschaften:
+        \begin{itemize}
+            \item Die Knoten enthalten \emph{Schlüssel} und \emph{Werte} (engl. \emph{key/value}).
+            \item Auf den Schlüsseln ist eine \emph{totale Ordnung} definiert.
+            \item<2-> Für jeden Knoten gilt:
+            \begin{itemize}
+                \item Die Schlüssel aller Knoten im linken Teilbaum sind kleiner als der Schlüssel der Wurzel.
+                \item Die Schlüssel aller Knoten im rechten Teilbaum sind größer als der Schlüssel der Wurzel.
+                \item (Gleichheit muss ggf. einer der Seiten zugeschlagen werden.)
+            \end{itemize}
+        \end{itemize}
+    \end{defblock}
+    \begin{block}<3->{Ziel: Effiziente Implementierung von Listen und Datenbanken}
+        \begin{itemize}
+            \item Idee: Binärer Suche und effiziente Sortierverfahren
+                        direkt in einer Datentstruktur verankern.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Auffinden von Elementen mit einem bestimmten Suchschlüssel}
+        \begin{itemize}
+            \item<2-> Baum leer: Nicht gefunden.
+            \item Suchschlüssel in Wurzel gefunden, liefere (Wert der) Wurzel.
+            \item Suchschlüssel kleiner als Wurzel: Suche im linken Teilbaum.
+            \item Suchschlüssel größer als Wurzel: Suche im rechten Teilbaum.
+        \end{itemize}
+    \end{block}
+    \begin{block}<3->{Einfügen von Elementen mit einem bestimmten Suchschlüssel}
+        \begin{itemize}
+            \item<4-> Baum leer: Hier einfügen.
+            \item Suchschlüssel kleiner Wurzel: Füge in linken Teilbaum ein.
+            \item Suchschlüssel größer Wurzel: Füge in rechten Teilbaum ein.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Löschen von Elementen mit einem bestimmten Suchschlüssel}
+        \begin{itemize}
+            \item Suche das zu löschende Element.
+            \item Falls Blatt: Entfernen.
+            \item Ansonsten: Suche den direkten Nachfolger oder Vorgänger.
+            \item Vertausche Element mit Nachfolger/Vorgänger.
+            \item Entferne Element aus entsprechendem Teilbaum.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}    
+    \begin{block}{Verhalten im Optimalfall}
+        \begin{itemize}
+            \item Linker und rechter Teilbaum in allen Knoten gleich tief.
+            \item Logarithmisches Verhalten beim Suchen, Einfügen und Löschen.
+        \end{itemize}
+    \end{block}
+    \begin{block}<2->{Verhalten im Worst Case}
+        \begin{itemize}
+            \item Eine Seite hat starkes Übergewicht.
+            \item Extremfall: Jeder Knoten hat nur einen Teilbaum.
+            \item Der Baum ist dann de facto eine Liste.
+        \end{itemize}
+    \end{block}
+\end{frame}
