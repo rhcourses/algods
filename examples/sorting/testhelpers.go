@@ -34,3 +34,11 @@ func AssertFalse(t testing.TB, condition bool, description string) {
 		t.Errorf("Expected %s to be false, but it was true", description)
 	}
 }
+
+// AssertEqual checks if the two given values are equal.
+// If they are not equal, it calls t.Errorf with a message.
+func AssertEqual(t testing.TB, expected, actual interface{}) {
+	if expected != actual {
+		t.Errorf("Expected %v, got %v", expected, actual)
+	}
+}
